@@ -1,0 +1,12 @@
+# Python environments and bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Local datasets and notebook state
+data/
+.ipynb_checkpoints/
+
+# Duplicate legacy checkpoint (the active checkpoint is in outputs/)
+models/
