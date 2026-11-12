@@ -72,6 +72,3 @@ This is a small sample and should not be treated as a general performance estima
 
 **Failure case:** `chihuahua_1.jpg` was labelled as a Chihuahua but predicted as a miniature pinscher. The photo shows a small, short-haired black-and-tan dog with upright ears. Those visual traits overlap between the two breeds, which may have led the model to confuse them; one example is not enough to establish the cause.
 
-## Next improvements
-
-Run and publish the official test-set metrics and confusion matrix. Expand the external test with more independently sourced, rights-cleared photos per breed, then analyze recurring confusions before changing the model or training setup.
