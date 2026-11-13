@@ -1,0 +1,45 @@
+Overall Test Accuracy: 88.03%
+
+                            precision    recall  f1-score   support
+
+                Abyssinian     0.7895    0.9184    0.8491        98
+                    Bengal     0.8396    0.8900    0.8641       100
+                    Birman     0.7925    0.8400    0.8155       100
+                    Bombay     0.9043    0.9659    0.9341        88
+         British_Shorthair     0.9176    0.7800    0.8432       100
+              Egyptian_Mau     0.9438    0.8660    0.9032        97
+                Maine_Coon     0.8925    0.8300    0.8601       100
+                   Persian     0.8654    0.9000    0.8824       100
+                   Ragdoll     0.7640    0.6800    0.7196       100
+              Russian_Blue     0.9091    0.9000    0.9045       100
+                   Siamese     0.9072    0.8800    0.8934       100
+                    Sphynx     0.9293    0.9200    0.9246       100
+          american_bulldog     0.6929    0.8800    0.7753       100
+ american_pit_bull_terrier     0.6447    0.4900    0.5568       100
+              basset_hound     0.8900    0.8900    0.8900       100
+                    beagle     0.8632    0.8200    0.8410       100
+                     boxer     0.8411    0.9091    0.8738        99
+                 chihuahua     0.8506    0.7400    0.7914       100
+    english_cocker_spaniel     0.8776    0.8600    0.8687       100
+            english_setter     0.9271    0.8900    0.9082       100
+        german_shorthaired     0.8197    1.0000    0.9009       100
+            great_pyrenees     0.9894    0.9300    0.9588       100
+                  havanese     0.8661    0.9700    0.9151       100
+             japanese_chin     0.9800    0.9800    0.9800       100
+                  keeshond     0.9898    0.9798    0.9848        99
+                leonberger     1.0000    0.9600    0.9796       100
+        miniature_pinscher     0.9639    0.8000    0.8743       100
+              newfoundland     0.9216    0.9400    0.9307       100
+                pomeranian     0.9300    0.9300    0.9300       100
+                       pug     0.9894    0.9300    0.9588       100
+             saint_bernard     0.8829    0.9800    0.9289       100
+                   samoyed     0.8839    0.9900    0.9340       100
+          scottish_terrier     0.8972    0.9697    0.9320        99
+                 shiba_inu     0.9048    0.9500    0.9268       100
+staffordshire_bull_terrier     0.6203    0.5506    0.5833        89
+           wheaten_terrier     0.9400    0.9400    0.9400       100
+         yorkshire_terrier     0.9677    0.9000    0.9326       100
+
+                  accuracy                         0.8803      3669
+                 macro avg     0.8808    0.8797    0.8781      3669
+              weighted avg     0.8814    0.8803    0.8788      3669
