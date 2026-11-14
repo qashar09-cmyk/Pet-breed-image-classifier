@@ -52,7 +52,7 @@ python inference.py External_pet_images\Cats\Persian_1.png --top-k 3
 python inference.py External_pet_images\Dogs --top-k 3
 ```
 
-`evaluate.py` saves `outputs/test_classification_report.txt` and `outputs/confusion_matrix.png`. `evaluate_external.py` saves `outputs/external_predictions.csv`. External filenames should use `Breed_number.ext`, such as `Persian_1.png`; supported extensions are JPG, JPEG, PNG, and WEBP.
+`evaluate.py` saves `outputs/test_classification_report.txt` and `outputs/confusion_matrix.png`. `evaluate_external.py` saves `outputs/external_predictions.csv` and a full results image at `outputs/external_evaluation_results.png`. External filenames should use `Breed_number.ext`, such as `Persian_1.png`; supported extensions are JPG, JPEG, PNG, and WEBP.
 
 For a reproducible public repository, include only external photos that you own or are licensed to redistribute.
 
@@ -72,7 +72,11 @@ The strongest and weakest breeds by F1-score were Leonberger (0.9796) and Americ
 - **Correct:** 35
 - **Accuracy:** 97.22%
 
-This is a small sample and should not be treated as a general performance estimate.
+The [CSV file](outputs/external_predictions.csv) lists every image, its labelled breed, the predicted breed, and whether the prediction was correct. The image below contains the full evaluator output, including the classification report for the breeds in this photo set and every individual prediction.
+
+![Full external image evaluation output](outputs/external_evaluation_results.png)
+
+This is a small, user-provided sample and should not be treated as a general performance estimate.
 
 **Failure case:** `chihuahua_1.jpg` was labelled as a Chihuahua but predicted as a miniature pinscher. The photo shows a small, short-haired black-and-tan dog with upright ears. Those visual traits overlap between the two breeds, which may have led the model to confuse them; one example is not enough to establish the cause.
 

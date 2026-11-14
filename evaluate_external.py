@@ -9,16 +9,45 @@ Expected layout (breed is read from the filename, e.g. Persian_1.png -> Persian)
 Usage:
     python evaluate_external.py
     python evaluate_external.py --external-dir path/to/External_pet_images
+
+The predictions are saved as CSV, and the complete printed report is saved as an image.
 """
 import argparse
 from pathlib import Path
 
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.metrics import accuracy_score, classification_report
 
 import config
 from inference import predict
 from model import get_device, load_class_names, load_trained_model
+
+
+def save_results_image(output_text, path):
+    lines = output_text.splitlines()
+    figure_height = max(6, len(lines) * 0.22)
+    figure, axis = plt.subplots(figsize=(12, figure_height), facecolor="#1e1e1e")
+    axis.set_facecolor("#1e1e1e")
+    axis.axis("off")
+
+    line_step = 0.96 / max(1, len(lines))
+    for index, line in enumerate(lines):
+        axis.text(
+            0.02,
+            0.98 - index * line_step,
+            line,
+            color="#d4d4d4",
+            fontfamily="monospace",
+            fontsize=9,
+            va="top",
+            transform=axis.transAxes,
+        )
+
+    figure.savefig(path, dpi=150, bbox_inches="tight", facecolor=figure.get_facecolor())
+    plt.close(figure)
 
 
 def main():
@@ -66,30 +95,48 @@ def main():
     results_df = pd.DataFrame(results)
     accuracy = accuracy_score(results_df["actual_breed"], results_df["predicted_breed"])
 
-    print("\nExternal Image Testing Results")
-    print("--------------------------------")
-    print("Total images tested:", len(results_df))
-    print(f"External Accuracy: {accuracy * 100:.2f}%")
-
     # Only breeds that actually appear in your photos
     present_breeds = sorted(results_df["actual_breed"].unique())
-    print("\nClassification Report (Present Breeds Only):\n")
-    print(classification_report(
+    report = classification_report(
         results_df["actual_breed"],
         results_df["predicted_breed"],
         labels=present_breeds,
         zero_division=0,
-    ))
-
-    print("\nIndividual Predictions:\n")
-    print(results_df.to_string(index=False))
-
-    print("\nIncorrect Predictions:")
-    print(results_df[~results_df["correct"]].to_string(index=False))
+    ).rstrip()
 
     config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     results_df.to_csv(config.EXTERNAL_PREDICTIONS_PATH, index=False)
-    print(f"\nResults saved: {config.EXTERNAL_PREDICTIONS_PATH}")
+
+    incorrect_predictions = results_df[~results_df["correct"]]
+    output_lines = [
+        "",
+        "External Image Testing Results",
+        "--------------------------------",
+        f"Total images tested: {len(results_df)}",
+        f"External Accuracy: {accuracy * 100:.2f}%",
+        "",
+        "Classification Report (Present Breeds Only):",
+        "",
+        *report.splitlines(),
+        "",
+        "Individual Predictions:",
+        "",
+        *results_df.to_string(index=False).splitlines(),
+        "",
+        "Incorrect Predictions:",
+    ]
+    if incorrect_predictions.empty:
+        output_lines.append("None")
+    else:
+        output_lines.extend(incorrect_predictions.to_string(index=False).splitlines())
+    output_lines.extend([
+        "",
+        f"Results saved: {config.EXTERNAL_PREDICTIONS_PATH}",
+        f"Results image saved: {config.EXTERNAL_RESULTS_IMAGE_PATH}",
+    ])
+    output_text = "\n".join(output_lines) + "\n"
+    save_results_image(output_text, config.EXTERNAL_RESULTS_IMAGE_PATH)
+    print(output_text, end="")
 
 
 if __name__ == "__main__":

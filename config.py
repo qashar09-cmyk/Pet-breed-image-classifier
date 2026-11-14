@@ -14,6 +14,7 @@ CLASS_NAMES_PATH = OUTPUT_DIR / "class_names.json"
 CONFUSION_MATRIX_PATH = OUTPUT_DIR / "confusion_matrix.png"
 TEST_REPORT_PATH = OUTPUT_DIR / "test_classification_report.txt"
 EXTERNAL_PREDICTIONS_PATH = OUTPUT_DIR / "external_predictions.csv"
+EXTERNAL_RESULTS_IMAGE_PATH = OUTPUT_DIR / "external_evaluation_results.png"
 
 # Data
 IMAGE_SIZE = 224
