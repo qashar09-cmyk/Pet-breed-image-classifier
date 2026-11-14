@@ -60,7 +60,11 @@ For a reproducible public repository, include only external photos that you own 
 
 ### Official Oxford-IIIT Pet test set
 
-**Pending.** The test dataset was not present in the local workspace, so the official test evaluation has not been run here. No test accuracy, per-breed precision/recall, or confusion matrix is claimed. After downloading the dataset, run `python evaluate.py --num-workers 0`; this writes the report and confusion-matrix image listed above.
+**Accuracy: 88.03%** on the 3,669-image official test set.
+
+The strongest and weakest breeds by F1-score were Leonberger (0.9796) and American Pit Bull Terrier (0.5568), respectively. The [full per-breed precision, recall, and F1 report](outputs/test_classification_report.txt) includes results for all 37 breeds.
+
+![Confusion matrix for the official Oxford-IIIT Pet test set](outputs/confusion_matrix.png)
 
 ### External photos
 
