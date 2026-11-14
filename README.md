@@ -78,9 +78,9 @@ The [CSV file](outputs/external_predictions.csv) lists every image, its labelled
 
 This is a small, user-provided sample and should not be treated as a general performance estimate.
 
-**Failure case:** `chihuahua_1.jpg` was labelled as a Chihuahua but predicted as a miniature pinscher. The photo shows a small, short-haired black-and-tan dog with upright ears. Those visual traits overlap between the two breeds, which may have led the model to confuse them; one example is not enough to establish the cause.
+**Failure case:** `chihuahua_1.jpg` was labelled as a Chihuahua but predicted as a miniature pinscher. The model assigned 46.18% to miniature pinscher, 45.42% to Chihuahua, and 1.63% to Bombay; the incorrect top prediction was ahead of Chihuahua by only 0.76 percentage points. The photo shows a small, short-haired black-and-tan dog with upright ears. Those visual traits overlap between the two breeds, which may have led the model to confuse them; one example is not enough to establish the cause.
 
-### What I would improve next
+## What I would improve next
 
 There are several areas where I would focus on improving the current model:
 
