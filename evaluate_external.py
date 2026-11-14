@@ -2,7 +2,7 @@
 
 Expected layout (breed is read from the filename, e.g. Persian_1.png -> Persian):
 
-    data/External_pet_images/
+    External_pet_images/
         Cats/  Persian_1.png, Bengal_2.jpg, ...
         Dogs/  Beagle_1.jpg, Pug_3.webp, ...
 

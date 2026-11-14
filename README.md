@@ -4,7 +4,7 @@ An image classifier for 37 cat and dog breeds from the Oxford-IIIT Pet dataset. 
 
 ## Model and training setup
 
-- **Architecture:** ResNet-18 initialized with ImageNet-pretrained weights, with its final layer replaced by a 37-class classifier. Transfer learning provides useful visual features for a relatively small dataset.
+- **Architecture:** ResNet-18 initialized with ImageNet-pretrained weights, with its final layer replaced by a 37-class classifier. Transfer learning provides useful visual features for a relatively small dataset, while ResNet-18 offers a practical balance of model capacity and training/inference speed.
 - **Optimization:** Adam, learning rate `1e-4`, batch size `32`, for up to 10 epochs.
 - **Preprocessing:** resize to `224 x 224`, ImageNet normalization; random horizontal flips are used for training only.
 - **Checkpoint selection:** save the weights with the best validation accuracy.
@@ -80,3 +80,16 @@ This is a small, user-provided sample and should not be treated as a general per
 
 **Failure case:** `chihuahua_1.jpg` was labelled as a Chihuahua but predicted as a miniature pinscher. The photo shows a small, short-haired black-and-tan dog with upright ears. Those visual traits overlap between the two breeds, which may have led the model to confuse them; one example is not enough to establish the cause.
 
+### What I would improve next
+
+There are several areas where I would focus on improving the current model:
+
+1. **Improve Data Augmentation:** The current training pipeline uses random horizontal flipping. I would experiment with additional augmentation techniques, such as random resized cropping and mild color jitter, to help the model recognize pets under different lighting conditions, backgrounds, and image compositions.
+
+2. **Improve Difficult Breed Classification:** I would analyze the confusion matrix and per-breed precision, recall, and F1-scores to identify which breeds are frequently misclassified. For example, the American Pit Bull Terrier achieved a relatively low F1-score of 0.5568. I would investigate these classification errors and explore ways to improve performance on the more challenging breeds.
+
+3. **Optimize Training Settings:** I would experiment with learning-rate scheduling and different training configurations, selecting the best settings based on validation performance. This could help the model learn more effectively and improve its generalization to unseen images.
+
+4. **Expand External Evaluation:** The current external evaluation contains 36 images and achieved 97.22% accuracy. Although this is encouraging, the sample is too small to represent real-world performance. I would collect a larger and more diverse set of independently sourced images, covering all 37 breeds under different lighting conditions, backgrounds, poses, and camera qualities, to evaluate the model's generalization more reliably.
+
+My priority would be to improve the existing ResNet-18 pipeline through better data augmentation, targeted error analysis, and more comprehensive evaluation before considering a more complex architecture.
