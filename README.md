@@ -38,6 +38,9 @@ The dataset is excluded from Git by `.gitignore`; do not commit the downloaded d
 ## Run
 
 ```powershell
+# Open the visual evaluation app (automatically evaluates External_pet_images)
+python app.py
+
 # Optional: retrain the model
 python train.py
 
@@ -51,6 +54,8 @@ python evaluate_external.py
 python inference.py External_pet_images\Cats\Persian_1.png --top-k 3
 python inference.py External_pet_images\Dogs --top-k 3
 ```
+
+To launch it with one click in VS Code, open `app.py` and select **Run Python File**. The app displays a scrollable gallery with each image, its filename-based actual breed, the predicted breed, prediction confidence, and the overall external accuracy. Use **Choose folder...** to select another parent folder containing `Cats` and/or `Dogs` subfolders, or **Incorrect only** to review mistakes. The app also saves its predictions to `outputs/external_predictions.csv`.
 
 `evaluate.py` saves `outputs/test_classification_report.txt` and `outputs/confusion_matrix.png`. `evaluate_external.py` saves `outputs/external_predictions.csv` and a full results image at `outputs/external_evaluation_results.png`. External filenames should use `Breed_number.ext`, such as `Persian_1.png`; supported extensions are JPG, JPEG, PNG, and WEBP.
 
