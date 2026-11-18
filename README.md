@@ -79,6 +79,15 @@ The strongest and weakest breeds by F1-score were Leonberger (0.9796) and Americ
 
 The [CSV file](outputs/external_predictions.csv) lists every image, its labelled breed, the predicted breed, and whether the prediction was correct. The image below contains the full evaluator output, including the classification report for the breeds in this photo set and every individual prediction.
 
+**Desktop app output:** The image below combines screenshots 1–12 in the order provided. Local Windows paths have been generalized.
+
+<details>
+<summary>View the complete app output</summary>
+
+![Pet Breed Classifier app output, screenshots 1–12 in order](outputs/app_screenshots.png)
+
+</details>
+
 ![Full external image evaluation output](outputs/external_evaluation_results.png)
 
 This is a small, user-provided sample and should not be treated as a general performance estimate.
